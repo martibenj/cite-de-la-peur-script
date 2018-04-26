@@ -42,7 +42,7 @@ const clean = (pFormat = null) => {
   }
 
   console.log('Deleting ', pathToDelete);
-  rimraf(pathToDelete, () => null);
+  rimraf.sync(pathToDelete);
 };
 
 /**
