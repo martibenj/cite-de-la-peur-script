@@ -1,6 +1,6 @@
 ## Script de la Cité de la Peur
 ### Purpose
-The aim of this repo is only to store the [script](https://github.com/martibenj/cite-de-la-peur-script/blob/master/dist/html/data.html) of "Le Cité de la Peur" movie.
+The aim of this repo is only to store the [script](https://github.com/martibenj/cite-de-la-peur-script/blob/master/dist/html/data-film.html) of "Le Cité de la Peur" movie.
 => No copyright infringement intended
 
 ### Generate outputs
