@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const rimraf = require('rimraf');
+const os = require("os");
 
 const {find} = require('lodash/fp');
 
@@ -89,7 +90,7 @@ const genFortune = () => {
     if (pData && pData.length > 0) {
       // Replacing tokens
       pData = pData.replace(new RegExp(startToken, 'g'), '');
-      pData = pData.replace(new RegExp(endToken, 'g'), String.fromCharCode(13) + '%');
+      pData = pData.replace(new RegExp(endToken, 'g'), os.EOL + '%');
 
       // Writing file
       fs.writeFileSync(fortuneFilePath, pData, 'utf8');
