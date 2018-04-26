@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const rimraf = require('rimraf');
-const os = require("os");
+const os = require('os');
 
 const {find} = require('lodash/fp');
 
