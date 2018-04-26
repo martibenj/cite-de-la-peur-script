@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const rimraf = require('rimraf');
 
-const {merge, reduce, set, take, isEmpty, map, find} = require('lodash/fp');
+const {find} = require('lodash/fp');
 
 const startToken = '%START%';
 const endToken = '%END%';
@@ -19,7 +19,6 @@ const fortune = 'fortune';
 const projRootPath = path.resolve('.');
 
 const rawFilmFilePath = path.resolve(projRootPath, data, filmRaw);
-const rawCreditsFilePath = path.resolve(projRootPath, data, creditsRaw);
 
 const distPath = path.resolve(projRootPath, dist);
 const distHtmlDirPath = path.resolve(projRootPath, dist, html);
@@ -85,6 +84,17 @@ const genHtml = () => {
 const genFortune = () => {
   clean(fortune);
   genArbo(fortune);
+  fs.readFile(rawFilmFilePath, 'utf8', (err, pData) => {
+    Object.setPrototypeOf(pData, String.prototype);
+    if (pData && pData.length > 0) {
+      // Replacing tokens
+      pData = pData.replace(new RegExp(startToken, 'g'), '');
+      pData = pData.replace(new RegExp(endToken, 'g'), String.fromCharCode(13) + '%');
+
+      // Writing file
+      fs.writeFileSync(fortuneFilePath, pData, 'utf8');
+    }
+  });
 };
 
 /** Generate all output files. */
